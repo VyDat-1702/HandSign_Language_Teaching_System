@@ -1,64 +1,108 @@
-🔍 Overview of the Hand Sign Language Teaching System Model
-We propose a real-time Vietnamese hand sign language teaching system, using computer vision combined with a deep recurrent neural network. The model consists of three main parts:
+# Vietnamese Hand Sign Language Teaching System
 
-🧠 1. Gesture Recognition Module
-MediaPipe is used to extract 63 keypoints (x, y, z coordinates) from the user's hand video.
+A real-time hand sign language teaching system using computer vision and deep learning to help children learn Vietnamese sign language.
 
-The keypoints in a 30-frame sequence are fed into a Gated Recurrent Unit (GRU) model — a variant of RNN — to learn and classify dynamic hand gestures.
+## Overview
 
-The GRU model structure:
+This project combines MediaPipe for hand tracking with a GRU neural network to recognize and teach Vietnamese hand sign language. The system includes an interactive interface with a 3D printed prosthetic arm for demonstration.
 
-Two GRU layers (256 and 128 units)
+## Features
 
-Dropout layer to avoid overfitting
+- **Real-time Gesture Recognition**: Recognizes hand gestures with 97.3% accuracy
+- **Three Learning Modes**:
+  - **Learn**: Watch and learn sign language symbols
+  - **Test**: Practice with multiple-choice exercises
+  - **Interpret**: Convert speech to sign language
+- **3D Prosthetic Arm**: Physical demonstration tool
+- **User-friendly Interface**: Built with PyQt5
 
-Flatten and Dense layers with softmax function to output classification probabilities
+## System Components
+
+### 1. Hand Tracking
+- Uses MediaPipe to extract 63 hand keypoints (x, y, z)
+- Captures 30 frames (~1.5 seconds) per gesture
+
+### 2. GRU Model
+```
+Architecture:
+- GRU Layer 1: 256 units
+- GRU Layer 2: 128 units
+- Dropout layer
+- Dense layer with softmax
 
 Total parameters: 440,884
-
-Performance: Accuracy reached 97.3% on the test set.
-
-🧑‍🏫 3. Interactive Learning Interface (User Interface)
-Designed with PyQt5, supporting 3 modes:
-
-Learn: Study letter and number symbols by observing the prosthetic arm.
-
-Test: Practice skills through multiple-choice questions recognizing gestures.
-
-Interpret: Input speech → system translates into sign language.
-
-The interface is intuitive and friendly, especially suitable for children.
-
-📊 Results & Evaluation
-Dataset:
-
-12 symbol classes (Vietnamese letters with accents and tone symbols)
-
-Each class has 170 videos
-
-Each video has 30 frames (~1.5 seconds)
-
-Comparison among GRU, LSTM, and RNN shows GRU outperforms in terms of parameter efficiency and accuracy:
-
 Accuracy: 97.3%
+```
 
-Precision, Recall, F1 score, and ROC AUC are also very high
+### 3. User Interface
+Built with PyQt5, includes three modes for learning and practicing sign language.
 
-✅ Summary
-Combined model components:
+## Dataset
 
-MediaPipe → hand skeleton extraction
+- 12 classes (Vietnamese letters with accents and tones)
+- 170 videos per class
+- 30 frames per video
+- Total: 2,040 videos
 
-GRU → dynamic hand sign recognition
+## Model Performance
 
-3D printed prosthetic arm → sign representation
+| Model | Accuracy | Parameters |
+|-------|----------|------------|
+| **GRU** | **97.3%** | 440,884 |
+| LSTM | 96.1% | 520,000+ |
+| RNN | 93.8% | 380,000 |
 
-PyQt5 interface → interactive learning and testing
+GRU was chosen for its balance of accuracy and efficiency.
 
-This is a complete teaching system, suitable for children with hearing or speech impairments, helping to address the shortage of sign language teachers.
+## Requirements
 
+```
+python >= 3.8
+tensorflow >= 2.8
+mediapipe >= 0.10
+PyQt5 >= 5.15
+opencv-python >= 4.5
+numpy
+```
 
+## Installation
 
-![Screenshot from 2025-05-22 08-17-01](https://github.com/user-attachments/assets/bb6cb8a3-c868-4eee-b8e4-267ecdec92a3)
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/vsl-teaching-system.git
+cd vsl-teaching-system
 
-![Screenshot from 2025-05-22 08-14-59](https://github.com/user-attachments/assets/6722a477-a8c5-44dc-99a7-897a2c52defb)
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+python main.py
+```
+
+## Screenshots
+
+### Main Interface
+![Main Interface](https://github.com/user-attachments/assets/6722a477-a8c5-44dc-99a7-897a2c52defb)
+
+### Learning Mode
+![Learning Session](https://github.com/user-attachments/assets/bb6cb8a3-c868-4eee-b8e4-267ecdec92a3)
+
+## Future Improvements
+
+- Add more gesture vocabulary
+- Mobile app version
+- Multi-user support
+- Progress tracking
+
+## Acknowledgments
+
+- MediaPipe for hand tracking framework
+- Vietnamese Sign Language community
+
+## Contact
+
+For questions or suggestions, please open an issue.
+
+---
+
+**Note**: This is a research project for educational purposes.
