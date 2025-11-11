@@ -23,16 +23,8 @@ This project combines MediaPipe for hand tracking with a GRU neural network to r
 - Captures 30 frames (~1.5 seconds) per gesture
 
 ### 2. GRU Model
-```
-Architecture:
-- GRU Layer 1: 256 units
-- GRU Layer 2: 128 units
-- Dropout layer
-- Dense layer with softmax
+![](https://github.com/user-attachments/assets/bb6cb8a3-c868-4eee-b8e4-267ecdec92a3)
 
-Total parameters: 440,884
-Accuracy: 97.3%
-```
 
 ### 3. User Interface
 Built with PyQt5, includes three modes for learning and practicing sign language.
@@ -54,38 +46,17 @@ Built with PyQt5, includes three modes for learning and practicing sign language
 
 GRU was chosen for its balance of accuracy and efficiency.
 
-## Requirements
-
-```
-python >= 3.8
-tensorflow >= 2.8
-mediapipe >= 0.10
-PyQt5 >= 5.15
-opencv-python >= 4.5
-numpy
-```
-
 ## Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/vsl-teaching-system.git
-cd vsl-teaching-system
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the application
-python main.py
 ```
 
 ## Screenshots
 
-### Main Interface
+### Main Interface Pipline
 ![Main Interface](https://github.com/user-attachments/assets/6722a477-a8c5-44dc-99a7-897a2c52defb)
-
-### Learning Mode
-![Learning Session](https://github.com/user-attachments/assets/bb6cb8a3-c868-4eee-b8e4-267ecdec92a3)
 
 ## Future Improvements
 
